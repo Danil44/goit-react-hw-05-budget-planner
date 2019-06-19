@@ -13,7 +13,7 @@ const labelStyles = `
 export default class ExpenseForm extends Component {
   state = {
     name: '',
-    amount: 0,
+    amount: '',
   };
 
   static propTypes = {
@@ -35,7 +35,7 @@ export default class ExpenseForm extends Component {
       name: this.state.name,
     });
 
-    this.setState({ name: '', amount: 0 });
+    this.setState({ name: '', amount: '' });
   };
 
   render() {
@@ -55,6 +55,7 @@ export default class ExpenseForm extends Component {
           <Input
             type="number"
             name="amount"
+            placeholder={0}
             value={this.state.amount}
             onChange={this.handleChange}
           />

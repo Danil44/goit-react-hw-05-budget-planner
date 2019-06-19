@@ -22,13 +22,24 @@ const Input = ({
   value = null,
   onChange = () => null,
   name = '',
-}) => <StyledInput type={type} value={value} onChange={onChange} name={name} />;
+  placeholder = '',
+}) => (
+  <StyledInput
+    placeholder={placeholder}
+    type={type}
+    value={value}
+    onChange={onChange}
+    name={name}
+  />
+);
 
 Input.propTypes = {
   type: PropTypes.string.isRequired,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   onChange: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
+  placeholder: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    .isRequired,
 };
 
 export default Input;
