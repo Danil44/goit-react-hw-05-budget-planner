@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const StyledForm = styled.form`
   display: flex;
@@ -14,5 +15,13 @@ const StyledForm = styled.form`
 const Form = ({ onSubmit = () => null, children }) => (
   <StyledForm onSubmit={onSubmit}>{children}</StyledForm>
 );
+
+Form.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
+};
 
 export default Form;

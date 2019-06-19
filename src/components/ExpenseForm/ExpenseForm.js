@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import shortid from 'shortid';
+import PropTypes from 'prop-types';
 import Form from '../Form';
 import Label from '../Label';
 import Input from '../Input';
@@ -13,6 +14,10 @@ export default class ExpenseForm extends Component {
   state = {
     name: '',
     amount: 0,
+  };
+
+  static propTypes = {
+    onSave: PropTypes.func.isRequired,
   };
 
   handleChange = e => {

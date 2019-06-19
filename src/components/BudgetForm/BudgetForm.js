@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Form from '../Form';
 import Label from '../Label';
 import Input from '../Input';
@@ -11,6 +12,10 @@ const labelStyles = `
 export default class BudgetForm extends Component {
   state = { budget: 0 };
 
+  static propTypes = {
+    onSave: PropTypes.func.isRequired,
+  };
+
   handleChange = e => {
     this.setState({
       budget: e.target.value,
@@ -20,7 +25,7 @@ export default class BudgetForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
 
-    this.props.onSave(this.state.budget);
+    this.props.onSave(Number(this.state.budget));
 
     this.setState({ budget: 0 });
   };
@@ -34,6 +39,7 @@ export default class BudgetForm extends Component {
             type="number"
             value={this.state.budget}
             onChange={this.handleChange}
+            name="budget"
           />
         </Label>
 

@@ -23,7 +23,7 @@ const Value = styled.p`
   font-size: 48px;
 `;
 
-const Stat = ({ label = 0, value = 0, isPositive = 0 }) => (
+const Stat = ({ label = '', value = 0, isPositive = 0 }) => (
   <Container isPositive={isPositive}>
     <Label>{label}</Label>
     <Value>{value}&nbsp;&#x24;</Value>

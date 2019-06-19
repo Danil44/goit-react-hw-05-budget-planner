@@ -1,6 +1,6 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import Button from '../Button';
 
 const Table = styled.table`
@@ -34,12 +34,24 @@ const ExpensesTable = ({ items = [], onRemove }) => (
           <td>{name}</td>
           <td>{amount}</td>
           <td>
-            <Button label="Delete" onClick={() => onRemove(id)} />
+            <Button type="button" label="Delete" onClick={() => onRemove(id)} />
           </td>
         </tr>
       ))}
     </tbody>
   </Table>
 );
+
+ExpensesTable.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      amount: PropTypes.number.isRequired,
+    }).isRequired,
+  ).isRequired,
+
+  onRemove: PropTypes.func.isRequired,
+};
 
 export default ExpensesTable;
